@@ -10,7 +10,7 @@
 ## 安装说明
 1. 克隆本仓库
 ```bash
-git clone https://github.com/yourusername/arxiv-weekly.git
+git clone https://github.com/kechen666/arxiv-weekly.git
 cd arxiv-weekly
 ```
 
