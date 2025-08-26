@@ -76,7 +76,7 @@ def filter_papers_by_team_in_list(papers, team_category):
 def print_papers_by_field_in_list(papers):
     """
     遍历 FIELD_CATEGORY_KEYWORDS 中的所有领域，并打印匹配的论文。
-    适用于 Windows 终端显示。
+    改进版打印，便于 Windows 终端阅读。
     """
     for field in FIELD_CATEGORY_KEYWORDS.keys():
         filtered = filter_papers_by_field_in_list(papers, field)
@@ -85,16 +85,19 @@ def print_papers_by_field_in_list(papers):
             print(f"[FIELD] {field} papers".center(80))
             print("-" * 80)
             for idx, paper in enumerate(filtered, 1):
-                print(f"[{idx}] - Title: {paper['title']}\n"
-                      f"    Authors: {', '.join(paper['authors'])}\n"
-                      f"    URL: {paper['url']}\n"
-                      f"    Category: {paper['primary_category']}\n")
+                pub_date = paper['published'].strftime("%Y-%m-%d")
+                print(f"[{idx}] Title   : {paper['title']}")
+                print(f"     Authors : {', '.join(paper['authors'])}")
+                print(f"     Date    : {pub_date}")
+                print(f"     Category: {paper['primary_category']}")
+                print(f"     URL     : {paper['url']}")
+                print("-" * 80)
 
 
 def print_papers_by_team_in_list(papers):
     """
     遍历 TEAM_CATEGORY_KEYWORDS 中的所有团队，并打印团队成员相关的论文。
-    适用于 Windows 终端显示。
+    改进版打印，便于 Windows 终端阅读。
     """
     for team in TEAM_CATEGORY_KEYWORDS.keys():
         filtered = filter_papers_by_team_in_list(papers, team)
@@ -103,25 +106,37 @@ def print_papers_by_team_in_list(papers):
             print(f"[TEAM] {team} team papers".center(80))
             print("-" * 80)
             for idx, paper in enumerate(filtered, 1):
-                print(f"[{idx}] - Title: {paper['title']}\n"
-                      f"    Authors: {', '.join(paper['authors'])}\n"
-                      f"    URL: {paper['url']}\n"
-                      f"    Category: {paper['primary_category']}\n")
+                pub_date = paper['published'].strftime("%Y-%m-%d")
+                print(f"[{idx}] Title   : {paper['title']}")
+                print(f"     Authors : {', '.join(paper['authors'])}")
+                print(f"     Date    : {pub_date}")
+                print(f"     Category: {paper['primary_category']}")
+                print(f"     URL     : {paper['url']}")
+                print("-" * 80)
+
 
 
 if __name__ == "__main__":
     start, end = get_last_n_days_arxiv_time_range(7)
-    print(f"Fetching papers from {start} to {end}...\n")
+    start_str = start.strftime("%Y-%m-%d %H:%M")
+    end_str = end.strftime("%Y-%m-%d %H:%M")
+    
+    print("=" * 80)
+    print(f"Fetching papers from {start_str} to {end_str}...".center(80))
+    print("=" * 80)
 
     # 从 config 获取默认 keyword
     keyword = DEFAULT_KEYWORD if DEFAULT_KEYWORD else "quantum"
 
     papers = get_papers(start_time=start, end_time=end, keyword=keyword)
-    print(f"finish fetching papers.")
 
-
+    print("=" * 80)
     if papers:
+        print(f"Finish fetching {len(papers)} papers.".center(80))
+        print("=" * 80)
         print_papers_by_field_in_list(papers)
         print_papers_by_team_in_list(papers)
     else:
-        print("No papers found in this time range.")
+        print("No papers found in this time range.".center(80))
+        print("=" * 80)
+

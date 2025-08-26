@@ -15,9 +15,6 @@ FIELD_CATEGORY_KEYWORDS = {
     "QEC Compilation": [
         "quantum compiler", "logical circuit optimization", "transpilation"
     ],
-    "QEC Magic State": [
-        "magic state", "T-gate", "distillation protocol"
-    ],
 }
 
 # 团队关键词示例
