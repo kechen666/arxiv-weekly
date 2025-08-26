@@ -37,9 +37,9 @@ python arxiv-weekly.py
 - `TEAM_CATEGORY_KEYWORDS`: 团队成员分类关键词
 
 ## 代码结构
-- <mcfile name="arxiv-weekly.py" path="..\arxiv-weekly\arxiv-weekly.py"></mcfile>: 主程序，包含论文获取和展示逻辑
-- <mcfile name="config.py" path="..\arxiv-weekly\config.py"></mcfile>: 配置文件，定义关键词和分类规则
-- <mcfile name="utility.py" path="..\arxiv-weekly\utility.py"></mcfile>: 工具函数，处理时间范围计算等
+- `arxiv-weekly.py`：主程序，包含论文获取和展示逻辑（路径：`./arxiv-weekly.py`）
+- `config.py`：配置文件，定义关键词和分类规则（路径：`./config.py`）
+- `utility.py`：工具函数，处理时间范围计算等（路径：`./utility.py`）
 
 ## 常见问题
 - **Q: 为什么有时获取不到论文？**
